@@ -1,0 +1,21 @@
+apiVersion: app/v1
+kind: Deployment
+metadata:
+  name: nginx
+spec:
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: nginx
+  replicas: 2 
+  template: 
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: rajugattupally/ubuntu1:raj
+        ports:
+        - containerPort: 80
